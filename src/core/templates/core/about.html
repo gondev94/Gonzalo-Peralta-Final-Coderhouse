@@ -1,1 +1,20 @@
 {% extends 'core/base.html' %}
+
+{% block content %}
+    
+<h1>Acerca de mí</h1>
+
+<p>Mi nombre es Gonzalo Peralta, soy estudiante inicial del lenguaje python a lo largo de este curso hemos aprendido a usar el framework Django. 
+    En esta oportunidad he realizado una aplicación de gestión de solicitud y cotización de fletes.
+</p>
+
+<p>
+    Linkedin: https://www.linkedin.com/in/gonzalo-ezequiel-peralta-a55b44161/
+</p>
+
+
+<a href="{% url 'cliente:index' %}">Volver a inicio</a>
+
+
+
+{% endblock content %}
