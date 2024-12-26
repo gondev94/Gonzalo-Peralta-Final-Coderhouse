@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de clientes</title>
-</head>
-<body>
-    {% for cliente  in clientes  %}
-        <p>{{cliente.username}} - {{cliente.email}} - {{cliente.firstname}} - {{cliente.lastname}} -</p>
-    {% endfor %}
-</body>
-</html>
+<h1>Fletes</h1>
+
+<a href="{% url 'core:index' %}">Inicio</a>
