@@ -1,8 +1,10 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block content %}
     
 <h1>Acerca de mí</h1>
+
+<img src="{% static 'core/img/about.jpg' %}" alt="" height="200">
 
 <p>Mi nombre es Gonzalo Peralta, soy estudiante inicial del lenguaje python a lo largo de este curso hemos aprendido a usar el framework Django. 
     En esta oportunidad he realizado una aplicación de gestión de solicitud y cotización de fletes.

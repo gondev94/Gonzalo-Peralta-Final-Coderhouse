@@ -1,9 +1,14 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block content %}
+<h1>Gestión de Fletes</h1>
 
-<a href="{% url 'cliente:index' %}">Ir a Fletes</a>
-<a href="{% url 'core:about' %}">Acerca de mí</a>
+<img src="{% static 'core/img/fletes_mudanzas.png' %}" alt="">
+<div>
+    <a href="{% url 'cliente:index' %}">Ir a Fletes</a>
+    <a href="{% url 'core:about' %}">Acerca de mí</a>
+</div>
 
 {% endblock content %}
 
