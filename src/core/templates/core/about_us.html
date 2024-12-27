@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<img src="{% static 'core/img/banner2.png' %}" alt="">
+
+<p>Somos una agencia dedicada al traslado de paquetes como de personas, no dudes en contactar nuestro servicio</p>
+<a href="{% url 'core:index' %}">Volver a inicio</a>
+{% endblock content %}
