@@ -10,6 +10,9 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, UserProfileForm
+from django.db.models import Q  # Para búsquedas avanzadas
+from .models import Freight  # Asegúrate de tener un modelo Freight para los fletes
+
 
 
 
@@ -57,3 +60,15 @@ class UpdateProfileView(UpdateView):
     def get_object(self):
         
         return self.request.user
+
+@login_not_required
+def search_freight(request):
+    query = request.GET.get('q', '')
+    results = []
+
+    if query:
+        results = Freight.objects.filter(
+            Q(client_name__icontains=query) | Q(package_description__icontains=query)
+        )
+
+    return render(request, 'core/search.html', {'query': query, 'results': results})

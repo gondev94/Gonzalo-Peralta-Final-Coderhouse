@@ -1,1 +1,7 @@
 {% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Sesión cerrada</h1>
+    <p>Has cerrado tu sesión correctamente.</p>
+    <a href="{% url 'core:login' %}">Volver a Iniciar Sesión</a>
+{% endblock content %}

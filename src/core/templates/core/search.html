@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Buscar Fletes</h1>
+    <form method="get" action="{% url 'core:search' %}">
+        <input type="text" name="q" placeholder="Buscar por cliente o paquete" value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados</h2>
+    {% if results %}
+        <ul>
+            {% for freight in results %}
+                <li>{{ freight.client_name }} - {{ freight.package_description }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+{% endblock content %}
