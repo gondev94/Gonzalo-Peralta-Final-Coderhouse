@@ -7,14 +7,20 @@
 </div>
 <div>
     {% if user.is_authenticated %}
+        <div style="text-align: center;">
         <a href="{% url 'cliente:index' %}"><button>Ir a Fletes</button></a>
         <form action="{% url 'core:logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Cerrar Sesión</button>
+        </div>
+        <div style="text-align: center;">
+        <a href="{% url 'core:logout' %}"><button type="submit">Cerrar Sesión</button></a> 
+        </div>
         </form>
+        <div style="text-align: center;">
         <a href="{% url 'core:profile' %}">
             <button>Mi Perfil</button>
         </a>
+        </div>
         {% else %}
         <div style="text-align: center;">
             <a href="{% url 'core:login' %}"><button>Iniciar Sesión</button></a>   

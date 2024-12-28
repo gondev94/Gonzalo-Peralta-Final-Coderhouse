@@ -26,6 +26,10 @@ def index(request):
 def about(request):
     return render(request, 'core/about.html')
 
+@login_not_required
+def about_us(request):
+    return render(request, 'core/about_us.html')
+
 
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
