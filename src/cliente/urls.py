@@ -2,16 +2,18 @@ from django.urls import path
 from .views import index
 from .views_models import transportista, paquete, cotizacion, flete
 
+
 app_name = 'cliente'
+
 
 urlpatterns = [
     path('', index, name='index'),
-    path('transportista/list/', transportista.transportista_list, name='transportista_list'),
-    path('transportista/create/', transportista.transportista_create, name='transportista_create'),
-    path('transportista/update/<int:pk>', transportista.transportista_update, name='transportista_update'),
-    path('transportista/detail/<int:pk>', transportista.transportista_detail, name='transportista_detail'),
-    path('transportista/delete/<int:pk>', transportista.transportista_delete, name='transportista_delete'),
-    path('paquete/list/', paquete.paquete_list, name='paquete_list'),
+    path('transportista/list/', transportista.TransportistaListView.as_view(), name='transportista_list'),
+    path('transportista/create/', transportista.TransportistaCreateView.as_view(), name='transportista_create'),
+    path('transportista/update/<int:pk>', transportista.TransportistaUpdateView.as_view(), name='transportista_update'),
+    path('transportista/detail/<int:pk>', transportista.TransportistaDetailView.as_view(), name='transportista_detail'),
+    path('transportista/delete/<int:pk>', transportista.TransportistaDeleteView.as_view(), name='transportista_delete'),
+    path('paquete/list/', paquete.paquete_list, name='paquete_list'),  # Asegúrate de que esta línea es correcta
     path('paquete/create/', paquete.paquete_create, name='paquete_create'),
     path('paquete/update/<int:pk>', paquete.paquete_update, name='paquete_update'),
     path('paquete/detail/<int:pk>', paquete.paquete_detail, name='paquete_detail'),

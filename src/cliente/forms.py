@@ -12,16 +12,22 @@ class CotizacionForm(forms.ModelForm):
     class Meta:
         model = Cotizacion
         fields = ['cliente', 'paquete', 'transportista', 'distancia_km', 'precio_por_km']
+        readonly_fields = ['cliente']
 
 class FleteForm(forms.ModelForm):
     class Meta:
         model = Flete
-        fields = ['nombre', 'descripcion', 'precio']
-
+        fields = ['usuario', 'descripcion', 'precio', 'transportista', 'paquete']
+    
 class PaqueteForm(forms.ModelForm):
     class Meta:
         model = Paquete
-        fields = ['usuario', 'descripcion', 'peso', 'destino']
+        fields = ['descripcion', 'peso', 'destino']
+        
+    def clean_nombre(self):
+        nombre: str = self.cleaned_data.get('nombre', '')
+        return validar_nombre(nombre)
+
 
 class TransportistaForm(forms.ModelForm):
     nombre = forms.CharField(validators=[validar_nombre])

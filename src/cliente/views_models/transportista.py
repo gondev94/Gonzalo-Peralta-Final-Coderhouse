@@ -1,67 +1,48 @@
 from django.contrib import messages
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import redirect, render
-
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from ..forms import TransportistaForm
 from ..models import Transportista
 
-# **** CATEGORIA - LIST VIEW
+
+class TransportistaListView(ListView):
+    model = Transportista
+    queryset = Transportista.objects.all()
+    def get_queryset(self):
+        busqueda = self.request.GET.get('busqueda')
+        if busqueda:
+            return Transportista.objects.filter(nombre__icontains=busqueda)
+        return Transportista.objects.all()
 
 
-def transportista_list(request: HttpRequest) -> HttpResponse:
-    busqueda = request.GET.get('busqueda')
-    if busqueda:
-        queryset = Transportista.objects.filter(nombre__icontains=busqueda)
-    else:
-        queryset = Transportista.objects.all()
-    return render(request, 'cliente/transportista_list.html', {'object_list': queryset})
+class TransportistaCreateView(CreateView):
+    model = Transportista
+    form_class = TransportistaForm
+    success_url = reverse_lazy('cliente:transportista_list')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Transportista creado exitosamente')
+        return super().form_valid(form)
 
 
-# **** CATEGORIA - CREATE VIEW
+class TransportistaUpdateView(UpdateView):
+    model = Transportista
+    form_class = TransportistaForm
+    success_url = reverse_lazy('cliente:transportista_list')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Transportista actualizado exitosamente')
+        return super().form_valid(form)
 
 
-def transportista_create(request: HttpRequest) -> HttpResponse:
-    if request.method == 'GET':
-        form = TransportistaForm()
-    if request.method == 'POST':
-        form = TransportistaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Transportista creado exitosamente')
-            return redirect('cliente:transportista_list')
-    return render(request, 'cliente/transportista_form.html', {'form': form})
+class TransportistaDetailView(DetailView):
+    model = Transportista
 
 
-# **** CATEGORIA - UPDATE VIEW
+class TransportistaDeleteView(DeleteView):
+    model = Transportista
+    success_url = reverse_lazy('cliente:transportista_list')
 
-
-def transportista_update(request: HttpRequest, pk: int) -> HttpResponse:
-    query = Transportista.objects.get(id=pk)
-    if request.method == 'GET':
-        form = TransportistaForm(instance=query)
-    if request.method == 'POST':
-        form = TransportistaForm(request.POST, instance=query)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Transportista actualizado exitosamente')
-            return redirect('cliente:transportista_list')
-    return render(request, 'cliente/transportista_form.html', {'form': form})
-                  
-# **** CATEGORIA - DETAIL VIEW
-
-
-def transportista_detail(request: HttpRequest, pk: int) -> HttpResponse:
-    query = Transportista.objects.get(id=pk)
-    return render(request, 'cliente/transportista_detail.html', {'object': query})
-
-
-# **** CATEGORIA - DELETE VIEW
-
-
-def transportista_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = Transportista.objects.get(id=pk)
-    if request.method == 'POST':
-        query.delete()
+    def delete(self, request, *args, **kwargs):
         messages.success(request, 'Transportista eliminado exitosamente')
-        return redirect('cliente:transportista_list')
-    return render(request, 'cliente/transportista_confirm_delete.html', {'object': query})
+        return super().delete(request, *args, **kwargs)

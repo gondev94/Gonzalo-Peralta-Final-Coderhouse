@@ -1,12 +1,10 @@
-{% extends 'core/base.html' %}
-
-{% block title %}Crear/Editar Paquete{% endblock %}
+{% extends "core/base.html" %}
 
 {% block content %}
-<h2>{% if object.pk %}Editar{% else %}Crear{% endif %} Paquete</h2>
-<form method="post">
+  <h2>Crear Paquete</h2>
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
 {% endblock %}

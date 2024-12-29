@@ -5,8 +5,6 @@ from django.shortcuts import redirect, render
 from ..forms import FleteForm
 from ..models import Flete
 
-# **** CATEGORIA - LIST VIEW
-
 
 def flete_list(request: HttpRequest) -> HttpResponse:
     busqueda = request.GET.get('busqueda')
@@ -15,9 +13,6 @@ def flete_list(request: HttpRequest) -> HttpResponse:
     else:
         queryset = Flete.objects.all()
     return render(request, 'cliente/flete_list.html', {'object_list': queryset})
-
-
-# **** CATEGORIA - CREATE VIEW
 
 
 def flete_create(request: HttpRequest) -> HttpResponse:
@@ -30,9 +25,6 @@ def flete_create(request: HttpRequest) -> HttpResponse:
             messages.success(request, 'Flete creado exitosamente')
             return redirect('cliente:flete_list')
     return render(request, 'cliente/flete_form.html', {'form': form})
-
-
-# **** CATEGORIA - UPDATE VIEW
 
 
 def flete_update(request: HttpRequest, pk: int) -> HttpResponse:
@@ -48,15 +40,11 @@ def flete_update(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, 'cliente/flete_form.html', {'form': form})
 
 
-# **** CATEGORIA - DETAIL VIEW
-
 
 def flete_detail(request: HttpRequest, pk: int) -> HttpResponse:
     query = Flete.objects.get(id=pk)
     return render(request, 'cliente/flete_detail.html', {'object': query})
 
-
-# **** CATEGORIA - DELETE VIEW
 
 
 def flete_delete(request: HttpRequest, pk: int) -> HttpResponse:
