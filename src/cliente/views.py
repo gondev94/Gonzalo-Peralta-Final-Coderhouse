@@ -16,7 +16,7 @@ def buscar_paquete(request):
 #vistas para transportista
 class TransportistaCreateView(CreateView):
     model = Transportista
-    fields = ['nombre', 'apelldio', 'licencia']
+    fields = ['nombre', 'apellido', 'licencia']
     template_name = 'cliente/transportista_form.html'
     success_url = reverse_lazy('transportista_list')
 

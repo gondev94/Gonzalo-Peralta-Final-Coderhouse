@@ -45,9 +45,8 @@ def transportista_update(request: HttpRequest, pk: int) -> HttpResponse:
             form.save()
             messages.success(request, 'Transportista actualizado exitosamente')
             return redirect('cliente:transportista_list')
-    return render(request, 'cliente/tranportista_form.html', {'form': form})
-
-
+    return render(request, 'cliente/transportista_form.html', {'form': form})
+                  
 # **** CATEGORIA - DETAIL VIEW
 
 
