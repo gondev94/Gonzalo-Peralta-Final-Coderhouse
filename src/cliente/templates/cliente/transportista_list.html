@@ -4,14 +4,14 @@
 
 {% block content %}
 <h2>Lista de Transportistas</h2>
-<a href="{% url 'cliente:transportista_create' %}">Crear nuevo Transportista</a>
+<a href="{% url 'cliente:transportista_create' %}"><button>Crear nuevo Transportista</button></a>
 <ul>
     {% for transportista in object_list %}
     <li>
-        {{ transportista.nombre }} - {{ transportista.apellido }} - {{ transportista.licencia }}
-        <a href="{% url 'cliente:transportista_update' transportista.pk %}">Editar</a>
-        <a href="{% url 'cliente:transportista_detail' transportista.pk %}">Detalles</a>
-        <a href="{% url 'cliente:transportista_delete' transportista.pk %}">Eliminar</a>
+        Transportista: {{ transportista.nombre }} - {{ transportista.apellido }}  - Licencia: {{ transportista.licencia }}
+        <a href="{% url 'cliente:transportista_update' paquete.pk %}">Editar</a>
+        <a href="{% url 'cliente:transportista_detail' paquete.pk %}">Detalles</a>
+        <a href="{% url 'cliente:transportista_delete' paquete.pk %}">Eliminar</a>
     </li>
     {% endfor %}
 </ul>

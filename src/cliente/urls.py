@@ -6,7 +6,7 @@ app_name = 'cliente'
 
 urlpatterns = [
     path('', index, name='index'),
-    path('transportista/list/', transportista.TransportistaListView.as_view(), name='transportista_list'),
+    path('transportista/list/', transportista.transportista_list, name='transportista_list'),
     path('transportista/create/', transportista.TransportistaCreateView.as_view(), name='transportista_create'),
     path('transportista/update/<int:pk>', transportista.TransportistaUpdateView.as_view(), name='transportista_update'),
     path('transportista/detail/<int:pk>', transportista.TransportistaDetailView.as_view(), name='transportista_detail'),

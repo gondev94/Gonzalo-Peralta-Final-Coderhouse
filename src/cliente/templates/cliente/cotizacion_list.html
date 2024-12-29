@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2>Lista de Cotizaciones</h2>
-<a href="{% url 'cliente:cotizacion_create' %}">Crear nueva Cotización</a>
+<a href="{% url 'cliente:cotizacion_create' %}"><button>Crear nueva Cotización</button></a>
 <ul>
     {% for cotizacion in object_list %}
     <li>
