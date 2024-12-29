@@ -59,10 +59,10 @@ def transportista_detail(request: HttpRequest, pk: int) -> HttpResponse:
 # **** CATEGORIA - DELETE VIEW
 
 
-def paquete_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    query = Paquete.objects.get(id=pk)
+def transportista_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = Transportista.objects.get(id=pk)
     if request.method == 'POST':
         query.delete()
-        messages.success(request, 'Paquete Eliminado exitosamente')
-        return redirect('cliente:paquete_list')
-aaaareturn render(request, 'cliente/paquete_confirm_delete.html', {'object': query})
+        messages.success(request, 'Transportista eliminado exitosamente')
+        return redirect('cliente:transportista_list')
+    return render(request, 'cliente/transportista_confirm_delete.html', {'object': query})
