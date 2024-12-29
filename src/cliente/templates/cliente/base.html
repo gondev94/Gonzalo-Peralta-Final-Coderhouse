@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fletes{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">   
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Cliente App{% endblock %}</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'cliente:cotizacion_list' %}">Cotización de Logística</a></li>
+            <li><a href="{% url 'cliente:paquete_list' %}">Paquetes</a></li>
+            <li><a href="{% url 'cliente:transportista_list' %}">Transportista</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; Gestión y Logística app hecha en CoderHouse</p>
+    </footer>
+</body>
+</html>

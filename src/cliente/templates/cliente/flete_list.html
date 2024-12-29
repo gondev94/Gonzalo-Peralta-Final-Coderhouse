@@ -1,13 +1,18 @@
 {% extends 'core/base.html' %}
 
-<h1>Lista de fletes</h1>
+{% block title %}Lista de Fletes{% endblock %}
 
+{% block content %}
+<h2>Lista de Fletes</h2>
+<a href="{% url 'cliente:flete_create' %}">Crear nuevo Flete</a>
 <ul>
-    {% for flete  in fletes %}
-        <li> {{flete}} </li>        
+    {% for flete in object_list %}
+    <li>
+        {{ flete.nombre }} - {{ flete.descripcion }} - Precio: {{ flete.precio }}
+        <a href="{% url 'cliente:flete_update' flete.pk %}">Editar</a>
+        <a href="{% url 'cliente:flete_detail' flete.pk %}">Detalles</a>
+        <a href="{% url 'cliente:flete_delete' flete.pk %}">Eliminar</a>
+    </li>
     {% endfor %}
-
 </ul>
-
-<a href="{% url 'cliente:index' %}">Volver</a>
-<a href="{% url 'core:index' %}">Volver a inicio</a>
+{% endblock %}

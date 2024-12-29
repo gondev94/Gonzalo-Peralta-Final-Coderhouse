@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Paquetes{% endblock %}
+
+{% block content %}
+<h2>Lista de Paquetes</h2>
+<a href="{% url 'cliente:paquete_create' %}">Crear nuevo Paquete</a>
+<ul>
+    {% for paquete in object_list %}
+    <li>
+        {{ paquete.descripcion }} - Peso: {{ paquete.peso }} kg - Destino: {{ paquete.destino }}
+        <a href="{% url 'cliente:paquete_update' paquete.pk %}">Editar</a>
+        <a href="{% url 'cliente:paquete_detail' paquete.pk %}">Detalles</a>
+        <a href="{% url 'cliente:paquete_delete' paquete.pk %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

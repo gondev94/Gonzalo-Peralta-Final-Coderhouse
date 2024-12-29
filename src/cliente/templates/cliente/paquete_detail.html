@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Detalles del Paquete{% endblock %}
+
+{% block content %}
+<h2>Detalles del Paquete</h2>
+<p>Descripción: {{ object.descripcion }}</p>
+<p>Peso: {{ object.peso }} kg</p>
+<p>Destino: {{ object.destino }}</p>
+<a href="{% url 'cliente:paquete_update' object.pk %}">Editar</a>
+<a href="{% url 'cliente:paquete_delete' object.pk %}">Eliminar</a>
+{% endblock %}

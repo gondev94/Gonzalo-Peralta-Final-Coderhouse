@@ -1,0 +1,19 @@
+{% extends 'cliente/base.html' %}
+{% block content %}
+    
+<title>Buscar Paquetes</title>
+<body>
+    <h1>Buscar Paquete</h1>
+    <form method="get">
+        <input type="text" name="q" placeholder="Buscar descripción de paquete" value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+    <ul>
+        {% for paquete in resultados %}
+            <li>{{ paquete.descripcion }} - Destino: {{ paquete.destino }}</li>
+        {% empty %}
+            <p>No se encontraron resultados.</p>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock content %}

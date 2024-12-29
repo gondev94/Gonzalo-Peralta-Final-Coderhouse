@@ -1,4 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+
+
+class User(AbstractUser):
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='core_user_set',  # Cambia el related_name para evitar colisiones
+        blank=True,
+        help_text='The groups this user belongs to.',
+        verbose_name='groups',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='core_user_permissions_set',  # Cambia el related_name para evitar colisiones
+        blank=True,
+        help_text='Specific permissions for this user.',
+        verbose_name='user permissions',
+    )
+    
 
 
 class Freight(models.Model):

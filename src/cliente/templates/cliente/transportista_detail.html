@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Detalles del Transportista{% endblock %}
+
+{% block content %}
+<h2>Detalles del Transportista</h2>
+<p>Nombre: {{ object.nombre }}</p>
+<p>Apellido: {{ object.apellido }}</p>
+<p>Licencia: {{ object.licencia }}</p>
+<a href="{% url 'cliente:transportista_update' object.pk %}">Editar</a>
+<a href="{% url 'cliente:transportista_delete' object.pk %}">Eliminar</a>
+{% endblock %}

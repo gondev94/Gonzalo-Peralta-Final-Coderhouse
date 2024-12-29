@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Crear/Editar Flete{% endblock %}
+
+{% block content %}
+<h2>{% if object.pk %}Editar{% else %}Crear{% endif %} Flete</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Cotizaciones{% endblock %}
+
+{% block content %}
+<h2>Lista de Cotizaciones</h2>
+<a href="{% url 'cliente:cotizacion_create' %}">Crear nueva Cotización</a>
+<ul>
+    {% for cotizacion in object_list %}
+    <li>
+        Cliente: {{ cotizacion.cliente.username }} -
+        Paquete: {{ cotizacion.paquete.descripcion }} -
+        Transportista: {{ cotizacion.transportista.nombre }} -
+        Total: {{ cotizacion.total }}
+        <a href="{% url 'cliente:cotizacion_update' cotizacion.pk %}">Editar</a>
+        <a href="{% url 'cliente:cotizacion_detail' cotizacion.pk %}">Detalles</a>
+        <a href="{% url 'cliente:cotizacion_delete' cotizacion.pk %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

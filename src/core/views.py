@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_not_required  
+from django.contrib.auth.decorators import login_required,login_not_required  # type: ignore
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
@@ -8,18 +8,15 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
+from .models import Freight
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, UserProfileForm
-from django.db.models import Q  # Para búsquedas avanzadas
-from .models import Freight  # Asegúrate de tener un modelo Freight para los fletes
-
-
+from django.db.models import Q
 
 
 @login_not_required
 def index(request):
     return render(request, 'core/index.html')
-
 
 
 @login_not_required
@@ -62,10 +59,10 @@ class UpdateProfileView(UpdateView):
     success_url = reverse_lazy('core:index')
 
     def get_object(self):
-        
+        # Devuelve el usuario actual en lugar de esperar un pk
         return self.request.user
-
-@login_not_required
+    
+@login_required
 def search_freight(request):
     query = request.GET.get('q', '')
     results = []

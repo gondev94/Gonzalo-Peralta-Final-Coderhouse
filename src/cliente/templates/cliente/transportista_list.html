@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Transportistas{% endblock %}
+
+{% block content %}
+<h2>Lista de Transportistas</h2>
+<a href="{% url 'cliente:transportista_create' %}">Crear nuevo Transportista</a>
+<ul>
+    {% for transportista in object_list %}
+    <li>
+        {{ transportista.nombre }} - {{ transportista.apellido }} - {{ transportista.licencia }}
+        <a href="{% url 'cliente:transportista_update' transportista.pk %}">Editar</a>
+        <a href="{% url 'cliente:transportista_detail' transportista.pk %}">Detalles</a>
+        <a href="{% url 'cliente:transportista_delete' transportista.pk %}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

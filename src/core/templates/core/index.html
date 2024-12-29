@@ -33,9 +33,11 @@
             <a href="{% url 'core:about_us' %}">Nosotros</a>
         </div>
 </div>
+    <div style="text-align: center;">
     {% for message in messages %}
         <p> {{ message }} </p>
     {% endfor %}
+    </div>
 
 {% endblock content %}
 
