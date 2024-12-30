@@ -3,8 +3,10 @@
 {% block title %}Lista de Cotizaciones{% endblock %}
 
 {% block content %}
-<h2>Lista de Cotizaciones</h2>
+<h2 style="text-align: center;">Lista de Cotizaciones</h2>
+<div style="text-align: center;">
 <a href="{% url 'cliente:cotizacion_create' %}"><button>Crear nueva Cotización</button></a>
+</div>
 <ul>
     {% for cotizacion in object_list %}
     <li>

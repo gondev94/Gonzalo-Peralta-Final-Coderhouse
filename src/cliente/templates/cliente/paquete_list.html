@@ -3,8 +3,11 @@
 {% block title %}Lista de Paquetes{% endblock %}
 
 {% block content %}
-<h2>Lista de Paquetes</h2>
+
+<h2 style="text-align: center;">Lista de Paquetes</h2>
+<div style="text-align: center;">
 <a href="{% url 'cliente:paquete_create' %}"><button>Crear nuevo Paquete</button></a>
+</div>
 <ul>
     {% for paquete in object_list %}
     <li>

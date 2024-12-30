@@ -3,8 +3,10 @@
 {% block title %}Lista de Transportistas{% endblock %}
 
 {% block content %}
-<h2>Lista de Transportistas</h2>
-<a href="{% url 'cliente:transportista_create' %}">Crear nuevo Transportista</a>
+<h2 style="text-align: center;">Lista de Transportistas</h2>
+<div style="text-align: center;" >
+<a href="{% url 'cliente:transportista_create' %}"><button>Crear nuevo Transportista</button></a>
+</div>
 <ul>
     {% for transportista in transportistas %}
     <li>

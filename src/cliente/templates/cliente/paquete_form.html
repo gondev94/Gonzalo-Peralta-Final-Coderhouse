@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-  <h2>Crear Paquete</h2>
+  <h2 style="text-align: center;">Crear Paquete</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

@@ -10,21 +10,21 @@
 </head>
 <body>
     <header>
-        <h1>{% block header %}Cliente App{% endblock %}</h1>
+        <h1 style="text-align: center;">{% block header %}Bienivenido{% endblock %}</h1>
     </header>
     <nav>
         <ul>
-            <li><a href="{% url 'cliente:cotizacion_list' %}">Cotización de Logística</a></li>
-            <li><a href="{% url 'cliente:paquete_list' %}">Paquetes</a></li>
-            <li><a href="{% url 'cliente:transportista_list' %}">Transportista</a></li>
-            <li><a href="{% url 'cliente:flete_list' %}">Fletes</a></li>
+        <li><a href="{% url 'cliente:cotizacion_list' %}"><button>Cotización de Logística</button></a></li>
+        <li><a href="{% url 'cliente:paquete_list' %}"><button>Paquetes</button></a></li>
+        <li><a href="{% url 'cliente:transportista_list' %}"><button>Transportista</button></a></button></li>
+        <li><a href="{% url 'cliente:flete_list' %}"><button>Fletes</button></li>
         </ul>
     </nav>
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; Gestión y Logística app hecha en CoderHouse</p>
+        <p style="text-align: center;">&copy; Aplicación de logística y gestión de fletes hecha en CoderHouse</p>
     </footer>
 </body>
 </html>

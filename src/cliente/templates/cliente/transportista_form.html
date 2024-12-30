@@ -3,7 +3,7 @@
 {% block title %}Crear/Editar Transportista{% endblock %}
 
 {% block content %}
-<h2>{% if object.pk %}Editar{% else %}Crear{% endif %} Transportista</h2>
+<h2 style="text-align: center;">{% if object.pk %}Editar{% else %}Crear{% endif %} Transportista</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

@@ -3,8 +3,10 @@
 {% block title %}Lista de Fletes{% endblock %}
 
 {% block content %}
-<h2>Lista de Fletes</h2>
-<a href="{% url 'cliente:flete_create' %}">Crear nuevo Flete</a>
+<h2 style="text-align: center;">Lista de Fletes</h2>
+<div style="text-align: center;" >
+<a href="{% url 'cliente:flete_create' %}"><button>Crear nuevo Flete</button></a>
+</div>
 <ul>
     {% for flete in object_list %}
     <li>
