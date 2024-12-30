@@ -12,7 +12,7 @@ class CotizacionForm(forms.ModelForm):
     class Meta:
         model = Cotizacion
         fields = ['cliente', 'paquete', 'transportista', 'distancia_km', 'precio_por_km']
-        readonly_fields = ['cliente']
+        
 
 class FleteForm(forms.ModelForm):
     class Meta:
